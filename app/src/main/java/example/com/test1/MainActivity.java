@@ -9,9 +9,10 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,badd,bsub,bresult;
+    Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,add,sub,result;
     EditText et;
     int a,b,c;
+    String s="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,18 +27,18 @@ public class MainActivity extends AppCompatActivity {
         b8=(Button)findViewById(R.id.button8);
         b9=(Button)findViewById(R.id.button9);
         b0=(Button)findViewById(R.id.button0);
-        badd=(Button)findViewById(R.id.add);
-        bsub=(Button)findViewById(R.id.sub);
-        bresult=(Button)findViewById(R.id.result);
+        add=(Button)findViewById(R.id.add);
+        sub=(Button)findViewById(R.id.sub);
+        result=(Button)findViewById(R.id.result);
         et=(EditText)findViewById(R.id.editText);
-        b1.setOnClickListener(new View.OnClickListener() {
+       /* b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"button",Toast.LENGTH_SHORT).show();
                 et.setText("1");
                 a=1;
             }
-        });
+        });*/
     }
     public void add(){
         c=a*2;
@@ -46,18 +47,33 @@ public class MainActivity extends AppCompatActivity {
         c=a*a;
     }
     public void show(View v) {
-        if (v == b2){
-            Toast.makeText(getApplicationContext(), "button2", Toast.LENGTH_SHORT).show();
-        et.setText("2");
-        a=2;
+
+        String rs = v.getResources().getResourceName(v.getId());
+        Button b=(Button)v;
+        String s1=b.getText().toString();
+
+
+            s = s.concat(s1);
+            Toast.makeText(getApplicationContext(), " " + s, Toast.LENGTH_SHORT).show();
+            et.setText(s);
+
+
+        //if (v == b2){
+           // Toast.makeText(getApplicationContext(), "button2", Toast.LENGTH_SHORT).show();
+      //  et.setText("2");
+        //a=2;
     }
-    else if(v == b3)
+    public void clear(View v){
+        s="";
+        et.setText("");
+    }
+  /*  else if(v == b3)
         {Toast.makeText(getApplicationContext(),"button3",Toast.LENGTH_SHORT).show();
-    et.setText("3");
+  //  et.setText("3");
     a=3;
     }
     else if(v == b4){
-        et.setText("4");
+    //    et.setText("4");
         a=4;
         }
         else if(v == b5){
@@ -84,19 +100,15 @@ public class MainActivity extends AppCompatActivity {
             et.setText("0");
             a=0;
         }
-        else if(v == badd){
+        else if(v == add){
             add();
         }
-        else if (v==bsub){
+        else if (v==sub){
             sub();
         }
-        else if (v==bresult){
+        else if (v==result){
             et.setText(+c);
-        }
-    }
+        }*/
+    //}
 
-    public void clickme()
-    {
-
-    }
 }
