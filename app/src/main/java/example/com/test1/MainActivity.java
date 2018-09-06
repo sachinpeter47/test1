@@ -2,6 +2,7 @@ package example.com.test1;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,8 +12,9 @@ public class MainActivity extends AppCompatActivity {
 
     Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,add,sub,result;
     EditText et;
-    int a,b,c;
     String s="";
+    String a="";
+    int n=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +42,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
     }
-    public void add(){
-        c=a*2;
+    public void clear(View v){
+        s="";
+        a="";
+        n=0;
+        et.setText("");
     }
-    public void sub(){
-        c=a*a;
+    public void add(View v){
+
+        a=String.valueOf(et.getText());
+        n=n+Integer.parseInt(a);
+        et.setText(""+n);
+        s="";
+        //or Editable a = et.getText();
+        Toast.makeText(getApplicationContext(),""+n,Toast.LENGTH_SHORT).show();
+
+    }
+    public void sub(View v){
+
+        a=String.valueOf(et.getText());
+        n=Integer.parseInt(a)-n;
+        et.setText(""+n);
+        s="";
+
+        //or Editable a = et.getText();
+        Toast.makeText(getApplicationContext(),""+n,Toast.LENGTH_SHORT).show();
     }
     public void show(View v) {
 
@@ -54,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             s = s.concat(s1);
-            Toast.makeText(getApplicationContext(), " " + s, Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getApplicationContext(), " " + s, Toast.LENGTH_SHORT).show();
             et.setText(s);
 
 
@@ -63,10 +85,7 @@ public class MainActivity extends AppCompatActivity {
       //  et.setText("2");
         //a=2;
     }
-    public void clear(View v){
-        s="";
-        et.setText("");
-    }
+
   /*  else if(v == b3)
         {Toast.makeText(getApplicationContext(),"button3",Toast.LENGTH_SHORT).show();
   //  et.setText("3");
